@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   fuel-alert:
-    image: ghcr.io/<username>/fuel-alert:latest
+    image: ghcr.io/lami95/fuel-alert:latest
     container_name: fuel-alert
     restart: always
     ports:
