@@ -7,12 +7,5 @@ services:
     restart: always
     ports:
       - "8000:8000"
-<<<<<<< HEAD
     volumes:
       - ./app:/app
-=======
-    env_file:
-      - .env
-    volumes:
-      - /volume1/docker/fuel-alert/data:/app/data
->>>>>>> 59c48fcda017a2e6774269863543fb80aea8dc0c

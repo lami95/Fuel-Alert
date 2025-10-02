@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
@@ -45,12 +44,3 @@ async def admin(request: Request):
         "request": request,
         "users": ["admin", "user1", "ldapuser"]
     })
-=======
-from fastapi import FastAPI
-
-app = FastAPI()
-
-@app.get('/')
-def root():
-    return {'message': 'Fuel Alert API V1.1 läuft!'}
->>>>>>> 59c48fcda017a2e6774269863543fb80aea8dc0c
