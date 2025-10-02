@@ -2,12 +2,12 @@ version: "3.9"
 
 services:
   fuel-alert:
-    image: ghcr.io/lami95/fuel-alert:latest
+    build: .
     container_name: fuel-alert
     restart: always
     ports:
       - "46200:8000"
-    environment:
-      - LDAP_SERVER=ldap://192.168.1.100:389
-      - LDAP_BASE_DN=dc=ldap,dc=synology,dc=local
-      - LDAP_SEARCH_FILTER=(uid={username})
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data

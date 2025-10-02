@@ -1,21 +1,25 @@
-# Fuel Alert V1.4 mit UI + LDAP-Suche (Docker & GitHub Actions)
+# Fuel Alert 🚗⛽
 
-## Features
-- Admin-Login (admin/adminpassword)
-- Login via Synology LDAP (Benutzername reicht, DN wird gesucht)
-- Dashboard mit Spritpreisen
-- Admin-Seite mit Benutzerübersicht
+Ein Docker-fähiger Service, der die aktuellen **Luxemburgischen Spritpreise** überwacht  
+und dich per **E-Mail** benachrichtigt, sobald sich etwas ändert.  
+Zusätzlich gibt es ein **Web-Dashboard** mit Admin-Login, Statistiken und Preis-Historie.  
 
-## ENV Variablen (docker-compose.yml)
-- LDAP_SERVER=ldap://192.168.1.100:389
-- LDAP_BASE_DN=dc=ldap,dc=synology,dc=local
-- LDAP_SEARCH_FILTER=(uid={username})
+---
 
-## Starten
+## ✨ Features
+- FastAPI Web-UI mit Login (Admin + Userverwaltung)
+- Dashboard: aktuelle Preise, letzte Änderung, Min/Max-Werte in Zeiträumen (Monat, Halbjahr, Jahr)
+- Preisüberwachung mit speicherbarer Historie
+- Benachrichtigung per E-Mail (SMTP)
+- Docker-Compose für einfache Installation
+- **Keine LDAP-Integration** → komplett lokal verwaltet
+
+---
+
+## 🛠 Installation
+
+### 1. Repository klonen oder ZIP entpacken
 ```bash
-docker-compose up -d
-```
+git clone https://github.com/<DEIN-USER>/fuel-alert.git
+cd fuel-alert
 
-## GitHub Actions (Automatischer Build)
-Jeder Push auf `main` baut und pusht Image nach GHCR:
-`ghcr.io/<github-user>/fuel-alert:latest`
