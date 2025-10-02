@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Einstellungen</h2>
+  <form method="post" action="/settings">
+    {% for fuel in fuels %}
+      <label>
+        <input type="checkbox" name="fuels" value="{{ fuel }}" {% if user_alerts.get(fuel) %}checked{% endif %}>
+        {{ fuel }}
+      </label><br>
+    {% endfor %}
+    <br>
+    <button type="submit">Speichern</button>
+  </form>
+  <br>
+  <a href="/dashboard">Zurück zum Dashboard</a>
+{% endblock %}

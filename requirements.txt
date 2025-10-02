@@ -1,5 +1,12 @@
 fastapi
 uvicorn[standard]
-jinja2
+Jinja2
 python-multipart
+sqlalchemy
+alembic
+passlib[bcrypt]
 ldap3
+requests
+schedule
+email-validator
+python-dotenv

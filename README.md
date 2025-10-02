@@ -1,21 +1,27 @@
-# Fuel Alert V1.4 mit UI + LDAP-Suche (Docker & GitHub Actions)
+# Fuel Alert V1.1 🚀
+
+Ein FastAPI-basiertes Tool für luxemburgische Spritpreise mit E-Mail-Benachrichtigung,
+LDAP-Login (Synology kompatibel) und Admin-Dashboard.
 
 ## Features
-- Admin-Login (admin/adminpassword)
-- Login via Synology LDAP (Benutzername reicht, DN wird gesucht)
-- Dashboard mit Spritpreisen
-- Admin-Seite mit Benutzerübersicht
+- Regelmäßiger Abruf luxemburgischer Spritpreise (GraphQL API)
+- Speicherung in SQLite mit History
+- Benutzerverwaltung mit Admin-UI
+- LDAP-Login (Synology Directory Server)
+- E-Mail-Benachrichtigungen bei Preisänderungen
+- Dashboard mit min/max Werten über 1M / 6M / 1Y
+- **NEU V1.1:** GitHub Actions Workflow für automatisches Docker-Build & Push zu GHCR
 
-## ENV Variablen (docker-compose.yml)
-- LDAP_SERVER=ldap://192.168.1.100:389
-- LDAP_BASE_DN=dc=ldap,dc=synology,dc=local
-- LDAP_SEARCH_FILTER=(uid={username})
-
-## Starten
+## Nutzung
 ```bash
+git clone https://github.com/<username>/fuel-alert.git
+cd fuel-alert
+cp .env.example .env
+nano .env   # Werte eintragen
 docker-compose up -d
 ```
 
-## GitHub Actions (Automatischer Build)
-Jeder Push auf `main` baut und pusht Image nach GHCR:
-`ghcr.io/<github-user>/fuel-alert:latest`
+## Hinweise
+- SQLite DB liegt in `data/` und wird durch Synology Volume persistiert.
+- `.env` enthält Secrets → wird durch `.gitignore` geschützt (nicht committen!).
+- Docker-Image wird automatisch in GHCR gebaut: `ghcr.io/<username>/fuel-alert:latest`
