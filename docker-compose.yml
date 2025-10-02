@@ -6,6 +6,8 @@ services:
     container_name: fuel-alert
     restart: always
     ports:
-      - "8000:8000"
-    volumes:
-      - ./app:/app
+      - "46200:8000"
+    environment:
+      - LDAP_SERVER=ldap://192.168.1.100:389
+      - LDAP_BASE_DN=dc=ldap,dc=synology,dc=local
+      - LDAP_SEARCH_FILTER=(uid={username})
