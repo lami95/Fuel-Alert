@@ -1,24 +1,13 @@
-{% extends 'base.html' %}
-{% block content %}
-  <h2>Admin</h2>
-  <h3>Benutzer</h3>
-  <table>
-    <thead><tr><th>ID</th><th>Username</th><th>Email</th><th>Admin</th></tr></thead>
-    <tbody>
-      {% for u in users %}
-      <tr><td>{{ u.id }}</td><td>{{ u.username }}</td><td>{{ u.email }}</td><td>{{ 'Ja' if u.is_admin else 'Nein' }}</td></tr>
-      {% endfor %}
-    </tbody>
-  </table>
-
-  <h3>Neuen Benutzer anlegen</h3>
-  <form method="post" action="/admin/create">
-    <label>Username: <input type="text" name="username" /></label><br>
-    <label>Password: <input type="password" name="password" /></label><br>
-    <label>Email: <input type="email" name="email" /></label><br>
-    <label>Admin: <input type="checkbox" name="is_admin" value="1" /></label><br>
-    <button type="submit">Anlegen</button>
-  </form>
-
-  <br><a href="/dashboard">Zurück</a>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<head><title>Admin</title></head>
+<body>
+  <h2>Admin-Bereich</h2>
+  <ul>
+    {% for user in users %}
+      <li>{{ user }}</li>
+    {% endfor %}
+  </ul>
+  <a href="/dashboard">Zurück zum Dashboard</a>
+</body>
+</html>

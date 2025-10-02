@@ -1,31 +1,12 @@
-{% extends 'base.html' %}
-{% block content %}
-  <h2>Dashboard</h2>
-  <div>
-    Zeitraum:
-    <a href="/dashboard?period=1m">1 Monat</a> |
-    <a href="/dashboard?period=6m">6 Monate</a> |
-    <a href="/dashboard?period=1y">1 Jahr</a>
-  </div>
-  <br />
-  <table>
-    <thead>
-      <tr><th>Sorte</th><th>Aktuell (€)</th><th>Letzte Änderung</th><th>Seit Änderung</th><th>Tiefst</th><th>Höchst</th></tr>
-    </thead>
-    <tbody>
-      {% for row in table %}
-      <tr>
-        <td>{{ row.fuel }}</td>
-        <td>{{ '%.3f'|format(row.price) if row.price is not none else '-' }}</td>
-        <td>{{ row.last_changed }}</td>
-        <td>{% if row.elapsed %}{{ (row.elapsed.days)|string }} Tage{% else %}-{% endif %}</td>
-        <td>{{ '%.3f'|format(row.min) if row.min is not none else '-' }}</td>
-        <td>{{ '%.3f'|format(row.max) if row.max is not none else '-' }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  <br />
-  <a href="/settings">Einstellungen</a>
-  {% if user.is_admin %} | <a href="/admin">Admin</a>{% endif %}
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<head><title>Dashboard</title></head>
+<body>
+  <h2>Fuel Alert Dashboard</h2>
+  <p>Willkommen, {{ user }}!</p>
+  <p>Aktueller Preis: {{ current_price }}</p>
+  <p>Letzte Änderung: {{ last_change }}</p>
+  <p>Min Preis: {{ min_price }} – Max Preis: {{ max_price }} (Zeitraum: {{ interval }})</p>
+  <a href="/admin">Zur Admin-Seite</a>
+</body>
+</html>
