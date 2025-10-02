@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><title>Admin</title></head>
+<body>
+  <h2>Admin-Bereich</h2>
+  <ul>
+    {% for user in users %}
+      <li>{{ user }}</li>
+    {% endfor %}
+  </ul>
+  <a href="/dashboard">Zurück zum Dashboard</a>
+</body>
+</html>
